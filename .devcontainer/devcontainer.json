@@ -1,8 +1,21 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "name": "Java 21 Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/java:21-bullseye",
   "features": {
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "21"
+    "ghcr.io/devcontainers/features/maven:1": {},
+    "ghcr.io/devcontainers/features/gradle:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot",
+        "vscjava.vscode-maven",
+        "richardwillis.vscode-gradle"
+      ]
     }
-  }
+  },
+  "forwardPorts": [8080, 3000],
+  "postCreateCommand": "java -version && mvn -version && gradle -version",
+  "remoteUser": "vscode"
 }
